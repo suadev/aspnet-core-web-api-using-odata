@@ -4,7 +4,7 @@ This is a simple api that consist of two entities called Product and ProductCate
 
 You can check following sample OData requests and results. 
 
-if you like Postman, just import AspNetCore_OData.postman_collection.json file and you will see more sample query in Get folders.
+if you like Postman, just import <a href="https://github.com/suadev/aspnet-core-web-api-using-odata/blob/master/AspNetCore_OData.postman_collection.json"> AspNetCore_OData.postman_collection.json</a> file and you will see more sample query in Get folders.
 
 <img src="https://raw.githubusercontent.com/suadev/aspnet-core-web-api-using-odata/master/postman.JPG" />
 
