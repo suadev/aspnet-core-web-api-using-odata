@@ -1,0 +1,608 @@
+{
+	"info": {
+		"_postman_id": "9a64ed14-4419-4fe2-a636-e341bd37e44c",
+		"name": "AspNetCore_OData",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get",
+					"item": [
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/products?$count=true",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"products"
+									],
+									"query": [
+										{
+											"key": "$count",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetById",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:5000/odata/products(010b34c3-5d91-4f15-a926-a4edbc3a9770)",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"products(010b34c3-5d91-4f15-a926-a4edbc3a9770)"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Filter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/products?$filter=price gt 10000",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"products"
+									],
+									"query": [
+										{
+											"key": "$filter",
+											"value": "price gt 10000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SkipTake",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/products?$count=true&$top=5&$skip=0&$orderby=no",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"products"
+									],
+									"query": [
+										{
+											"key": "$count",
+											"value": "true"
+										},
+										{
+											"key": "$top",
+											"value": "5"
+										},
+										{
+											"key": "$skip",
+											"value": "0"
+										},
+										{
+											"key": "$orderby",
+											"value": "no"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OrderByAsc",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/products?$orderby=no",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"products"
+									],
+									"query": [
+										{
+											"key": "$orderby",
+											"value": "no"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OrderByDesc",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/products?$orderby=no desc",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"products"
+									],
+									"query": [
+										{
+											"key": "$orderby",
+											"value": "no desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FilterProductNameContains",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/products?$filter=translations/any(c: contains(c/name,  'dene'))",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"products"
+									],
+									"query": [
+										{
+											"key": "$filter",
+											"value": "translations/any(c: contains(c/name,  'dene'))"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FilterBySubProperty",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/products?$filter=roomTypeTranslations/any(c: c/name eq 'Executive')",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"products"
+									],
+									"query": [
+										{
+											"key": "$filter",
+											"value": "roomTypeTranslations/any(c: c/name eq 'Executive')"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OnlyCount",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/products?$top=0&$count=true",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"products"
+									],
+									"query": [
+										{
+											"key": "$top",
+											"value": "0"
+										},
+										{
+											"key": "$count",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SelectFields",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/products?$select=id,productname",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"products"
+									],
+									"query": [
+										{
+											"key": "$select",
+											"value": "id,productname"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Expand",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/products?$expand=category",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"products"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "category"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ExpandAndSelect",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/products?$expand=category($select=categoryName)&$select=*",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"products"
+									],
+									"query": [
+										{
+											"key": "$expand",
+											"value": "category($select=categoryName)"
+										},
+										{
+											"key": "$select",
+											"value": "*"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sony 65-Inch YENİİİİİİİ\",\n    \"categoryId\": \"1236a458-0802-4340-bdd4-05859c9aaaad\",\n    \"description\": \"Sony 65-Inch 4K Ultra HD Smart LED TV\",\n    \"price\": 10000,\n    \"weight\": 70\n}"
+						},
+						"url": {
+							"raw": "localhost:5000/odata/products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"odata",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/odata/products/0100b063-f8db-4ba5-936c-b3d623cebde5",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"odata",
+								"products",
+								"0100b063-f8db-4ba5-936c-b3d623cebde5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\n            \"id\": \"010b34c3-5d91-4f15-a926-a4edbc3a9770\",\n            \"name\": \"Lenovo Thinkpad - YENİİİİİİİİİİ2222\",\n            \"categoryId\": \"a65bc1ae-c1c7-4c20-8b3b-4b48490d3fb0\",\n            \"description\": \"Lenovo Thinkpad Laptop\",\n            \"price\": 2800,\n            \"weight\": 1.7\n        }"
+						},
+						"url": {
+							"raw": "localhost:5000/odata/products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"odata",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product_Category",
+			"item": [
+				{
+					"name": "Get",
+					"item": [
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/product_categories?$count=true",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"product_categories"
+									],
+									"query": [
+										{
+											"key": "$count",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetById",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:5000/odata/product_categories(1236a458-0802-4340-bdd4-05859c9aaaad)",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"product_categories(1236a458-0802-4340-bdd4-05859c9aaaad)"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OnlyCount",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/odata/product_categories?$top=0&$count=true",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"odata",
+										"product_categories"
+									],
+									"query": [
+										{
+											"key": "$top",
+											"value": "0"
+										},
+										{
+											"key": "$count",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"My Category\"\n}"
+						},
+						"url": {
+							"raw": "localhost:5000/odata/product_categories",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"odata",
+								"product_categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/odata/product_categories/833507f4-958c-469e-8615-5993df3b53fe",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"odata",
+								"product_categories",
+								"833507f4-958c-469e-8615-5993df3b53fe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\n            \"id\": \"9eebe71d-d58c-462c-882f-5241b860211e\",\n            \"name\": \"My category update\"\n        }"
+						},
+						"url": {
+							"raw": "localhost:5000/odata/product_categories",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"odata",
+								"product_categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b9ccdc18-8a58-4f39-915e-abb42055dca8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "006bf3f6-b431-4b5a-8959-8a889a2e354c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

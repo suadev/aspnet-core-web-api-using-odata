@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:10.6-alpine
+    container_name: mypostgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=Product
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
