@@ -6,7 +6,7 @@ You can check following sample OData requests and results.
 
 if you like Postman, just import AspNetCore_OData.postman_collection.json file and you will see more sample query in Get folders.
 
-<img src="https://raw.githubusercontent.com/suadev/aspnet-core-web-api-using-odata-temp/master/postman.JPG?token=ABNFAW3OUW454CL2CBRFKGS5GN6DY" />
+<img src="https://raw.githubusercontent.com/suadev/aspnet-core-web-api-using-odata/master/postman.JPG" />
 
 
 #### Get All Categories - http://localhost:5000/odata/product_categories?$count=true
