@@ -84,7 +84,7 @@ if you like Postman, just import <a href="https://github.com/suadev/aspnet-core-
 ```
 <hr>
 
-#### Filter by Price - http://localhost:5000/odata/products?$filter=price%20gt%2010000
+#### Filter by Price (price greater than 10000) - http://localhost:5000/odata/products?$filter=price%20gt%2010000
 
 ```javascript
 {
@@ -200,7 +200,7 @@ if you like Postman, just import <a href="https://github.com/suadev/aspnet-core-
 ```
 <hr>
 
-#### Expand - http://localhost:5000/odata/products?$expand=category
+#### Expand with CategoryGroup - http://localhost:5000/odata/products?$expand=category
 
 ```javascript
 {
@@ -247,7 +247,7 @@ if you like Postman, just import <a href="https://github.com/suadev/aspnet-core-
 ```
 <hr>
 
-#### Expand and Select - http://localhost:5000/odata/products?$expand=category($select=categoryName)&$select=id,productName
+#### Expand with CategoryGroup and Select - http://localhost:5000/odata/products?$expand=category($select=categoryName)&$select=id,productName
 
 ```javascript
 {
