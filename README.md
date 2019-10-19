@@ -1,8 +1,11 @@
-This repo aims to show that how easily OData can be used with asp.net core web api projects to perform all CRUD operations.
+This repo aims to show that how easily OData can be added to your existing/new Asp.Net Core Web Api to perform all CRUD operations.
 
 This is a simple api that consist of two entities called Product and ProductCategory.
 
-You can check following sample OData requests and results. 
+api/products -> classic rest endpoint
+odata/products -> odata rest endpoint
+
+You can check following sample OData queries and results. 
 
 if you like Postman, just import <a href="https://github.com/suadev/aspnet-core-web-api-using-odata/blob/master/AspNetCore_OData.postman_collection.json"> AspNetCore_OData.postman_collection.json</a> file and you will see more sample query in Get folders.
 
