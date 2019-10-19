@@ -2,8 +2,9 @@ This repo aims to show that how easily OData can be added to your existing/new A
 
 This is a simple api that consist of two entities called Product and ProductCategory.
 
-api/products -> classic rest endpoint
-odata/products -> odata rest endpoint
+localhost:5000/api/products -> classic rest endpoint
+
+localhost:5000/odata/products -> odata rest endpoint
 
 You can check following sample OData queries and results. 
 
