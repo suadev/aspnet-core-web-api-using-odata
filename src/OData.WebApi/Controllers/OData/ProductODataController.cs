@@ -6,7 +6,7 @@ using OData.WebApi.Dto;
 namespace Pms.Api.Controllers.OData
 {
     [ODataRoutePrefix("products")]
-    public class ProductODataController : ODataBaseController<Product, ProductDto>
+    public class ProductODataController : ODataBaseController<Product>
     {
         public ProductODataController(IRepository<Product> productRepository)
             : base(productRepository)

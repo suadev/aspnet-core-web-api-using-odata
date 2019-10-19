@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "9a64ed14-4419-4fe2-a636-e341bd37e44c",
-		"name": "AspNetCore_OData",
+		"name": "Dotnet_Conf_OData",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -48,14 +48,14 @@
 									}
 								],
 								"url": {
-									"raw": "localhost:5000/odata/products(010b34c3-5d91-4f15-a926-a4edbc3a9770)",
+									"raw": "localhost:5000/odata/products(6d42ac79-2b65-460d-9991-22b86ad66fb9)",
 									"host": [
 										"localhost"
 									],
 									"port": "5000",
 									"path": [
 										"odata",
-										"products(010b34c3-5d91-4f15-a926-a4edbc3a9770)"
+										"products(6d42ac79-2b65-460d-9991-22b86ad66fb9)"
 									]
 								}
 							},
@@ -92,7 +92,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:5000/odata/products?$count=true&$top=5&$skip=0&$orderby=no",
+									"raw": "localhost:5000/odata/products?$count=true&$top=5&$skip=1",
 									"host": [
 										"localhost"
 									],
@@ -112,11 +112,7 @@
 										},
 										{
 											"key": "$skip",
-											"value": "0"
-										},
-										{
-											"key": "$orderby",
-											"value": "no"
+											"value": "1"
 										}
 									]
 								}
@@ -129,7 +125,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:5000/odata/products?$orderby=no",
+									"raw": "localhost:5000/odata/products?$orderby=price",
 									"host": [
 										"localhost"
 									],
@@ -141,7 +137,7 @@
 									"query": [
 										{
 											"key": "$orderby",
-											"value": "no"
+											"value": "price"
 										}
 									]
 								}
@@ -154,7 +150,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:5000/odata/products?$orderby=no desc",
+									"raw": "localhost:5000/odata/products?$orderby=price desc",
 									"host": [
 										"localhost"
 									],
@@ -166,7 +162,7 @@
 									"query": [
 										{
 											"key": "$orderby",
-											"value": "no desc"
+											"value": "price desc"
 										}
 									]
 								}
@@ -179,7 +175,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:5000/odata/products?$filter=translations/any(c: contains(c/name,  'dene'))",
+									"raw": "localhost:5000/odata/products?$filter=contains(productname, 'LG')",
 									"host": [
 										"localhost"
 									],
@@ -191,7 +187,7 @@
 									"query": [
 										{
 											"key": "$filter",
-											"value": "translations/any(c: contains(c/name,  'dene'))"
+											"value": "contains(productname, 'LG')"
 										}
 									]
 								}
@@ -204,7 +200,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:5000/odata/products?$filter=roomTypeTranslations/any(c: c/name eq 'Executive')",
+									"raw": "localhost:5000/odata/products?$expand=category($filter=categoryName eq 'TV')",
 									"host": [
 										"localhost"
 									],
@@ -215,8 +211,8 @@
 									],
 									"query": [
 										{
-											"key": "$filter",
-											"value": "roomTypeTranslations/any(c: c/name eq 'Executive')"
+											"key": "$expand",
+											"value": "category($filter=categoryName eq 'TV')"
 										}
 									]
 								}
@@ -308,7 +304,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:5000/odata/products?$expand=category($select=categoryName)&$select=*",
+									"raw": "localhost:5000/odata/products?$expand=category($select=categoryName)&$select=id,productName",
 									"host": [
 										"localhost"
 									],
@@ -324,7 +320,7 @@
 										},
 										{
 											"key": "$select",
-											"value": "*"
+											"value": "id,productName"
 										}
 									]
 								}
@@ -604,5 +600,6 @@
 				]
 			}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }

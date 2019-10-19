@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OData.Edm;
 using OData.WebApi.Data;
+using OData.WebApi.Data.Entities;
 using OData.WebApi.Data.Repositories;
 using OData.WebApi.Dto;
 
@@ -86,10 +87,10 @@ namespace OData.WebApi
             var builder = new ODataConventionModelBuilder();
             builder.EnableLowerCamelCase();
 
-            builder.EntitySet<ProductDto>("products")
+            builder.EntitySet<Product>("products")
                 .EntityType.Filter().Count().Expand().OrderBy().Page().Select();
 
-            builder.EntitySet<ProductCategoryDto>("product_categories")
+            builder.EntitySet<ProductCategory>("product_categories")
                 .EntityType.Filter().Count().Expand().OrderBy().Page().Select();
 
             return builder.GetEdmModel();
