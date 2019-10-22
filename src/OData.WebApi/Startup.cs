@@ -28,44 +28,18 @@ namespace OData.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ProductDbContext>(options =>
-                    options.UseNpgsql(Configuration.GetConnectionString("ProductConStr")));
-
+            services.AddDbContext<ProductDbContext>(
+                    options => options.UseNpgsql(Configuration.GetConnectionString("ProductConStr")));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-            services.AddOData();
-            services.AddMvc(options =>
-                {
-                    options.EnableEndpointRouting = false;
-                    // https://github.com/OData/WebApi/issues/1177
-                    foreach (var outputFormatter in options.OutputFormatters.OfType<ODataOutputFormatter>()
-                        .Where(_ => _.SupportedMediaTypes.Count == 0))
-                    {
-                        outputFormatter.SupportedMediaTypes.Add(
-                            new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
-                    }
-
-                    foreach (var inputFormatter in options.InputFormatters.OfType<ODataInputFormatter>()
-                        .Where(_ => _.SupportedMediaTypes.Count == 0))
-                    {
-                        inputFormatter.SupportedMediaTypes.Add(
-                            new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
-                    }
-                })
+            services
+                .AddMvc(options => options.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddOData();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
-            }
-
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 using (var context = serviceScope.ServiceProvider.GetService<ProductDbContext>())
@@ -75,10 +49,12 @@ namespace OData.WebApi
             }
 
             app.UseMvc(
-                rb =>
+                routeBuilder =>
                 {
-                    rb.MapODataServiceRoute("ODataRoute", "odata", GetEdmModel());
-                    rb.EnableDependencyInjection();
+                    // Workaround: https://github.com/OData/WebApi/issues/1175
+                    // routeBuilder.EnableDependencyInjection();
+                    routeBuilder.Filter().Count().Expand().OrderBy().Select().MaxTop(1);
+                    routeBuilder.MapODataServiceRoute("ODataRoute", "odata", GetEdmModel());
                 });
         }
 
@@ -87,12 +63,10 @@ namespace OData.WebApi
             var builder = new ODataConventionModelBuilder();
             builder.EnableLowerCamelCase();
 
-            builder.EntitySet<Product>("products")
-                .EntityType.Filter().Count().Expand().OrderBy().Page().Select();
-
-            builder.EntitySet<ProductCategory>("product_categories")
-                .EntityType.Filter().Count().Expand().OrderBy().Page().Select();
-
+            builder.EntitySet<Product>("products");
+            // .EntityType.Filter().Count().Expand().OrderBy().Page().Select();
+            builder.EntitySet<ProductCategory>("product_categories");
+            // .EntityType.Filter().Count().Expand().OrderBy().Page().Select();
             return builder.GetEdmModel();
         }
     }
