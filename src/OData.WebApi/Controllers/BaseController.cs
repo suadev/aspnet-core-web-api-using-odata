@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Mapster;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Mvc;
 using OData.WebApi.Data.Entities;
@@ -9,7 +10,7 @@ using OData.WebApi.Data.Repositories;
 namespace Pms.Api.Controllers
 {
     [ApiController]
-    public class BaseController<TEntity> : ControllerBase
+    public class BaseController<TEntity, TDto> : ControllerBase
         where TEntity : BaseEntity
     {
         private readonly IRepository<TEntity> _repository;
@@ -19,13 +20,13 @@ namespace Pms.Api.Controllers
         }
         public IActionResult Get()
         {
-            return Ok(_repository.Query());
+            return Ok(_repository.Query().ProjectToType<TDto>());
         }
 
         [HttpGet("({id})")]
-        public virtual SingleResult<TEntity> Get([FromODataUri] Guid id)
+        public virtual SingleResult<TDto> Get([FromODataUri] Guid id)
         {
-            var entity = _repository.Query().Where(q => q.Id.Equals(id));
+            var entity = _repository.Query().Where(q => q.Id.Equals(id)).ProjectToType<TDto>();
             return SingleResult.Create(entity);
         }
 

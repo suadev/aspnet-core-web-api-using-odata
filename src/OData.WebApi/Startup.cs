@@ -51,9 +51,8 @@ namespace OData.WebApi
             app.UseMvc(
                 routeBuilder =>
                 {
-                    // Workaround: https://github.com/OData/WebApi/issues/1175
-                    // routeBuilder.EnableDependencyInjection();
-                    routeBuilder.Filter().Count().Expand().OrderBy().Select().MaxTop(1);
+                    // routeBuilder.EnableDependencyInjection(); //Enables the non-OData route container.
+                    // routeBuilder.Filter().Count().Expand().OrderBy().Select();
                     routeBuilder.MapODataServiceRoute("ODataRoute", "odata", GetEdmModel());
                 });
         }
@@ -61,12 +60,13 @@ namespace OData.WebApi
         private static IEdmModel GetEdmModel()
         {
             var builder = new ODataConventionModelBuilder();
-            builder.EnableLowerCamelCase();
 
-            builder.EntitySet<Product>("products");
-            // .EntityType.Filter().Count().Expand().OrderBy().Page().Select();
-            builder.EntitySet<ProductCategory>("product_categories");
-            // .EntityType.Filter().Count().Expand().OrderBy().Page().Select();
+            builder.EntitySet<Product>("products")
+                .EntityType.Filter().Count().Expand().OrderBy().Page().Select();
+
+            builder.EntitySet<ProductCategory>("product_categories")
+                .EntityType.Filter().Count().Expand().OrderBy().Page().Select();
+
             return builder.GetEdmModel();
         }
     }
