@@ -9,8 +9,6 @@ namespace OData.WebApi.Data.Repositories
     public interface IRepository<TEntity>
         where TEntity : BaseEntity
     {
-        Task<List<TEntity>> GetListAsync();
-        Task<TEntity> GetByIdAsync(object id);
         Task<bool> IsExistAsync(Guid id);
         void Add(TEntity obj);
         void Update(TEntity obj);

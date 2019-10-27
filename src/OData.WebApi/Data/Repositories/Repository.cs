@@ -17,14 +17,6 @@ namespace OData.WebApi.Data.Repositories
             _context = context;
             _dbSet = _context.Set<TEntity>();
         }
-        public Task<List<TEntity>> GetListAsync()
-        {
-            return _dbSet.ToListAsync();
-        }
-        public Task<TEntity> GetByIdAsync(object id)
-        {
-            return _dbSet.FindAsync(id);
-        }
 
         public async Task<bool> IsExistAsync(Guid id)
         {
