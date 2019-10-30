@@ -17,7 +17,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:5000/odata/products?$count=true",
+									"raw": "localhost:5000/odata/products",
 									"host": [
 										"localhost"
 									],
@@ -25,12 +25,6 @@
 									"path": [
 										"odata",
 										"products"
-									],
-									"query": [
-										{
-											"key": "$count",
-											"value": "true"
-										}
 									]
 								}
 							},
@@ -343,7 +337,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Sony 65-Inch YENİİİİİİİ\",\n    \"categoryId\": \"1236a458-0802-4340-bdd4-05859c9aaaad\",\n    \"description\": \"Sony 65-Inch 4K Ultra HD Smart LED TV\",\n    \"price\": 10000,\n    \"weight\": 70\n}"
+							"raw": "{\n    \"productName\": \"Sony 65-Inch\",\n    \"categoryId\": \"1236a458-0802-4340-bdd4-05859c9aaaad\",\n    \"description\": \"Sony 65-Inch 4K Ultra HD Smart LED TV\",\n    \"price\": 10000,\n    \"weight\": 70\n}"
 						},
 						"url": {
 							"raw": "localhost:5000/odata/products",
@@ -422,20 +416,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:5000/odata/product_categories?$count=true",
+									"raw": "localhost:5000/odata/products",
 									"host": [
 										"localhost"
 									],
 									"port": "5000",
 									"path": [
 										"odata",
-										"product_categories"
-									],
-									"query": [
-										{
-											"key": "$count",
-											"value": "true"
-										}
+										"products"
 									]
 								}
 							},
@@ -511,7 +499,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"My Category\"\n}"
+							"raw": "{\n    \"categoryName\":\"My Category\"\n}"
 						},
 						"url": {
 							"raw": "localhost:5000/odata/product_categories",

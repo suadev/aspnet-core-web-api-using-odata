@@ -10,7 +10,7 @@ using OData.WebApi.Data;
 namespace OData.WebApi.Data.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
-    [Migration("20190720201751_init")]
+    [Migration("20191030195859_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,9 +28,13 @@ namespace OData.WebApi.Data.Migrations
 
                     b.Property<Guid>("CategoryId");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue("skose");
 
-                    b.Property<DateTime>("CreatedDate");
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(new DateTime(2019, 10, 30, 22, 58, 59, 249, DateTimeKind.Local).AddTicks(675));
 
                     b.Property<string>("Description");
 
@@ -40,7 +44,7 @@ namespace OData.WebApi.Data.Migrations
 
                     b.Property<string>("UpdatedBy");
 
-                    b.Property<DateTime>("UpdatedDate");
+                    b.Property<DateTime?>("UpdatedDate");
 
                     b.Property<double>("Weight");
 
@@ -53,101 +57,92 @@ namespace OData.WebApi.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("28084f89-0afa-4b66-8964-12fe25f4b894"),
+                            Id = new Guid("bc4987fe-1226-419c-b140-cf6327542b32"),
                             CategoryId = new Guid("a65bc1ae-c1c7-4c20-8b3b-4b48490d3fb0"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "HP Zbook Laptop",
                             Price = 2000m,
                             ProductName = "HP Zbook",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 3.0
                         },
                         new
                         {
-                            Id = new Guid("234f7621-6348-422d-880a-a601045a0f0a"),
+                            Id = new Guid("0ffd7b32-0df0-40c0-9905-6ad65ae11433"),
                             CategoryId = new Guid("a65bc1ae-c1c7-4c20-8b3b-4b48490d3fb0"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "MacBook Laptop",
                             Price = 3000m,
                             ProductName = "MacBook Pro",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 2.1000000000000001
                         },
                         new
                         {
-                            Id = new Guid("6e183fc1-c770-4b3b-abde-5f0c1ed5a418"),
+                            Id = new Guid("baaeab63-7bab-467c-a06f-274eedea528a"),
                             CategoryId = new Guid("a65bc1ae-c1c7-4c20-8b3b-4b48490d3fb0"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Lenovo Thinkpad Laptop",
                             Price = 2800m,
                             ProductName = "Lenovo Thinkpad",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 1.7
                         },
                         new
                         {
-                            Id = new Guid("119cfc7e-37ce-450e-87ba-a3f2dd47f7f1"),
+                            Id = new Guid("2f2aed89-f417-4225-822a-113baf3041f5"),
                             CategoryId = new Guid("8b726886-e719-413c-a125-939ee5af387d"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "LG 32-Inch 720p LED TV",
                             Price = 12000m,
                             ProductName = "LG 32-Inch",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 60.0
                         },
                         new
                         {
-                            Id = new Guid("ce86bf01-3875-4dac-8918-d7328d439b2e"),
+                            Id = new Guid("570b67c6-7a24-4041-8582-0ceba4debf0b"),
                             CategoryId = new Guid("8b726886-e719-413c-a125-939ee5af387d"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Sony 65-Inch 4K Ultra HD Smart LED TV",
                             Price = 10000m,
                             ProductName = "Sony 65-Inch",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 70.0
                         },
                         new
                         {
-                            Id = new Guid("232f28e3-6fad-4ebd-9ea5-6c2ed48bf23e"),
+                            Id = new Guid("5d54be88-12fa-4ccf-b394-c8d909111449"),
                             CategoryId = new Guid("8b726886-e719-413c-a125-939ee5af387d"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Samsung 32-Inch 1080p Smart LED TV",
                             Price = 15000m,
                             ProductName = "Samsung 32-Inch",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 50.0
                         },
                         new
                         {
-                            Id = new Guid("e0de4e9f-3b88-456c-a364-dd263a3aba84"),
+                            Id = new Guid("746e00e0-49dc-42a8-b935-96697f772478"),
                             CategoryId = new Guid("1236a458-0802-4340-bdd4-05859c9aaaad"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "JBL Tune 500BT On-Ear",
                             Price = 15m,
                             ProductName = "JBL Tune",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 0.29999999999999999
                         },
                         new
                         {
-                            Id = new Guid("c547f38d-a4e0-4617-adfc-bf95aad7c2df"),
+                            Id = new Guid("218a34f5-52a0-4106-9c98-ba3acdf3db6f"),
                             CategoryId = new Guid("1236a458-0802-4340-bdd4-05859c9aaaad"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Panasonic ErgoFit In-Ear",
                             Price = 29m,
                             ProductName = "Panasonic ErgoFit",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 0.40000000000000002
                         },
                         new
                         {
-                            Id = new Guid("ddc4a52b-a9bc-4bf6-be11-699ae206a293"),
+                            Id = new Guid("390ab7d0-3d23-456b-854c-0e5b153b08fa"),
                             CategoryId = new Guid("1236a458-0802-4340-bdd4-05859c9aaaad"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Sennheiser CX Wireless In-Ear",
                             Price = 44m,
                             ProductName = "Sennheiser CX",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Weight = 0.40000000000000002
                         });
                 });
@@ -159,13 +154,17 @@ namespace OData.WebApi.Data.Migrations
 
                     b.Property<string>("CategoryName");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue("skose");
 
-                    b.Property<DateTime>("CreatedDate");
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(new DateTime(2019, 10, 30, 22, 58, 59, 253, DateTimeKind.Local).AddTicks(537));
 
                     b.Property<string>("UpdatedBy");
 
-                    b.Property<DateTime>("UpdatedDate");
+                    b.Property<DateTime?>("UpdatedDate");
 
                     b.HasKey("Id");
 
@@ -176,22 +175,19 @@ namespace OData.WebApi.Data.Migrations
                         {
                             Id = new Guid("8b726886-e719-413c-a125-939ee5af387d"),
                             CategoryName = "TV",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("1236a458-0802-4340-bdd4-05859c9aaaad"),
                             CategoryName = "Headphones",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = new Guid("a65bc1ae-c1c7-4c20-8b3b-4b48490d3fb0"),
                             CategoryName = "Computers",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

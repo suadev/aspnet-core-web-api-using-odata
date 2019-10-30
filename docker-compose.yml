@@ -6,6 +6,6 @@ services:
     ports:
       - "5436:5432"
     environment:
-      - POSTGRES_DB=Product
+      - POSTGRES_DB=OData
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres

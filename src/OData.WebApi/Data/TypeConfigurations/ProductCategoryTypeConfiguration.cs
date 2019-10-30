@@ -9,6 +9,9 @@ namespace OData.WebApi.Data.TypeConfigurations
     {
         public void Configure(EntityTypeBuilder<ProductCategory> builder)
         {
+            builder.Property(s => s.CreatedDate).HasDefaultValue(DateTime.Now);
+            builder.Property(s => s.CreatedBy).HasDefaultValue("skose");
+
             builder.HasData(
                 new ProductCategory
                 {

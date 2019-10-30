@@ -60,6 +60,7 @@ namespace OData.WebApi
         private static IEdmModel GetEdmModel()
         {
             var builder = new ODataConventionModelBuilder();
+            builder.EnableLowerCamelCase();
 
             builder.EntitySet<Product>("products")
                 .EntityType.Filter().Count().Expand().OrderBy().Page().Select();
