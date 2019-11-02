@@ -1,3 +1,5 @@
+Presentation : https://speakerdeck.com/suadev/add-odata-support-to-asp-dot-net-core-web-api
+
 This repo aims to show that how easily OData can be added to your existing/new Asp.Net Core Web Api to perform all CRUD operations.
 
 This is a simple api that consist of two entities called Product and ProductCategory.
